@@ -1,9 +1,3 @@
-基于[NoCortY](https://github.com/NoCortY)的项目修改。
-1. xterm版本升至4.X
-2. terminal自适应宽高
-3. 心跳检查
-4. 断开后自动重新连接
-
 **效果**
 
 自适应宽高
@@ -13,6 +7,9 @@
 断开自动重连
 
 ![reconnect](https://github.com/JiuyeXD/MarkdownPics/raw/master/webssh_reconnect.gif)
+
+断开连接
+![disconnect](https://github.com/JiuyeXD/MarkdownPics/raw/master/webssh_disconnect.gif)
 
 
 参考资料：  
@@ -27,11 +24,7 @@
 
 - ### 连接
 
-  ![连接](http://image.objectspace.cn/%E8%BF%9E%E6%8E%A5.png)
-
-- ### 连接成功
-
-  ![连接成功](http://image.objectspace.cn/%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F.png)
+  ![连接](https://github.com/JiuyeXD/MarkdownPics/raw/master/webssh_connect.gif)
 
 - ### 命令操作
 
