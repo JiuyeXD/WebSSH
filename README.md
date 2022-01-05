@@ -12,8 +12,8 @@
 ![disconnect](https://github.com/JiuyeXD/MarkdownPics/raw/master/webssh_disconnect.gif)
 
 
-参考资料：  
-[WebSSH](https://github.com/NoCortY/WebSSH)
+参考项目：  
+[WebSSH](https://github.com/NoCortY/WebSSH) || 
 [Webssh-Java](https://github.com/mervynlam/Webssh-Java)
 
 ## 启动
