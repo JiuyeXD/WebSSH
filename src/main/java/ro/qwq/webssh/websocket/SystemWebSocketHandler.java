@@ -30,7 +30,7 @@ public class SystemWebSocketHandler implements WebSocketHandler{
      */
     @Override
     public void afterConnectionEstablished(WebSocketSession wss) throws Exception {
-        log.info("\nUser: {} Connected", wss.getAttributes().get(MagicString.USER_UUID_KEY));
+        log.info("\nUser: {}, {} Connected", wss.getAttributes().get(MagicString.USER_UUID_KEY), wss.getAttributes().get(MagicString.VISITOR_ADDRESS));
         /* 初始化连接 */
         webSSHService.initConnection(wss);
     }
@@ -46,7 +46,7 @@ public class SystemWebSocketHandler implements WebSocketHandler{
     @Override
     public void handleMessage(WebSocketSession wss, WebSocketMessage<?> wsm) throws Exception {
         if (wsm instanceof TextMessage) {
-            log.info("\nUser: {} \nSendCommand:{}", wss.getAttributes().get(MagicString.USER_UUID_KEY), wsm.getPayload().toString());
+            log.info("\nUser: {}, {} \nSendCommand:{}", wss.getAttributes().get(MagicString.USER_UUID_KEY), wss.getAttributes().get(MagicString.VISITOR_ADDRESS), wsm.getPayload().toString());
             /* 接收消息 */
             webSSHService.recvHandle(((TextMessage) wsm).getPayload(), wss);
         }else if(!(wsm instanceof BinaryMessage) && !(wsm instanceof PongMessage)) {
@@ -77,7 +77,7 @@ public class SystemWebSocketHandler implements WebSocketHandler{
      */
     @Override
     public void afterConnectionClosed(WebSocketSession wss, CloseStatus closeStatus) throws Exception {
-        log.info("\nUser: {} Disconnected", String.valueOf(wss.getAttributes().get(MagicString.USER_UUID_KEY)));
+        log.info("\nUser: {}, {} Disconnected", wss.getAttributes().get(MagicString.USER_UUID_KEY), wss.getAttributes().get(MagicString.VISITOR_ADDRESS));
         /* 关闭连接 */
         webSSHService.close(wss);
     }

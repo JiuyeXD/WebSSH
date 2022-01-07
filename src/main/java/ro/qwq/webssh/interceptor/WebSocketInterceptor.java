@@ -1,5 +1,6 @@
 package ro.qwq.webssh.interceptor;
 
+import ro.qwq.webssh.Utils.NetworkUtils;
 import ro.qwq.webssh.constant.MagicString;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
@@ -7,6 +8,7 @@ import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.UUID;
 
@@ -39,6 +41,11 @@ public class WebSocketInterceptor implements HandshakeInterceptor {
             String uuid = UUID.randomUUID().toString().replace("-","");
             /* 存储用户的uuid */ 
             map.put(MagicString.USER_UUID_KEY, uuid);
+
+            String ip = NetworkUtils.getIpAddr(((ServletServerHttpRequest) serverHttpRequest).getServletRequest());
+            String addressAndOperator = NetworkUtils.getAddressByBD2(ip);
+            String address = NetworkUtils.removeNetworkOperator(addressAndOperator);
+            map.put(MagicString.VISITOR_ADDRESS, address);
             return true;
         } else {
             return false;

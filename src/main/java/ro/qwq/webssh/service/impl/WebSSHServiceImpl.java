@@ -195,7 +195,9 @@ public class WebSSHServiceImpl implements WebSSHService {
         /* 设置channel */
         sshConnectInfo.setChannel(channel);
         /* 转发消息 */
-        transToSSH(channel, "curl wttr.in/青岛\n");
+        String city = sshConnectInfo.getWebSocketSession().getAttributes().get(MagicString.VISITOR_ADDRESS).toString();
+        city = "本地局域网".equals(city) ? "": city;
+        transToSSH(channel, "curl wttr.in/" + city + "\n");
 
         /* 读取终端返回的信息流 */
         try (InputStream inputStream = channel.getInputStream()) {
